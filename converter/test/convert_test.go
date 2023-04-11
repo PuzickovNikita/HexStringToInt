@@ -2,13 +2,14 @@ package converter
 
 import (
 	"HexStringToInt64/converter"
+	"HexStringToInt64/converter/storage/vectorStorage"
 	"math"
 	"math/bits"
 	"testing"
 )
 
 func TestMultiply(t *testing.T) {
-	conv, _ := converter.GetConverter()
+	conv, _ := converter.GetConverter(vectorStorage.NewVectorStorage(0))
 	//TODO: добавить в ридми(а сначала создать его) объяснение этих формул
 	tmp := math.Log(float64(int(1)<<(bits.UintSize-4*conv.GetHexStep())-5)) / math.Log(10)
 	if float64(conv.GetDecStep()) >= tmp {
